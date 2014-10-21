@@ -39,7 +39,7 @@ This will add a type of service on project allowing you to categorize them.
     'data' : ['project_view.xml'],
     'demo_xml' : [],
     'test': [],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False
 }
