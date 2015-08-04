@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="project_issue_contract_report.report_contract_issue_def">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                        <p>
+                            <h2>
+                                <span>Open Issues</span>
+                            </h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Subject</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr style="color: red;" t-if="len(o.get_account_issue(['open','draft','pending'])) > 0"
+                                        t-foreach="o.get_account_issue(['open','draft','pending'])"
+                                        t-as="issue">
+                                        <td>
+                                          Ref: <span t-field="issue.id" />
+                                        </td>
+                                        <td>
+                                            <span t-field="issue.date" />
+                                        </td>
+                                        <td>
+                                            <span t-field="issue.name" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="len(o.get_account_issue(['open','draft','pending'])) == 0">
+                                        <td colspan="5">
+                                            <span>No Issue</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                        <p>
+                            <h2>
+                                <span>Close Issues</span>
+                            </h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Ref</th>
+                                        <th>Subject</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr style="color: green;" t-if="len(o.get_account_issue(['done','canceled'],30)) > 0"
+                                        t-foreach="o.get_account_issue(['done','canceled'],30)"
+                                        t-as="issue">
+                                        <td>
+                                          Ref: <span t-field="issue.id" />
+                                        </td>
+                                        <td>
+                                            <span t-field="issue.date" />
+                                        </td>
+                                        <td>
+                                            <span t-field="issue.name" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="len(o.get_account_issue(['done','canceled'],30)) == 0">
+                                        <td colspan="5">
+                                            <span>No Issue</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                        <p style="page-break-after:always"></p>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="project_issue_contract_report.report_contract_issue_qweb">
+            <style type="text/css">
+                .col-separator { border-right: 3px solid lightgrey !important; }
+                .large-text { min-height: 50px !important;}
+            </style>
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t
+                        t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'project_issue_contract_report.report_contract_issue_def')" />
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+    <report
+      id="project_issue_contract_report.report_contract_issue"
+      model="account.analytic.account"
+      string="Project Issue"
+      report_type="qweb-pdf"
+      name="project_issue_contract_report.report_contract_issue_qweb"
+      file="project_issue_contract_report.report_contract_issue_qweb"
+      />
+    <report
+      id="project_issue_contract_report.report_contract_history_issue"
+      model="account.analytic.account"
+      string="History Issue"
+      report_type="qweb-pdf"
+      name="project_issue_contract_report.report_contract_history_issue_qweb"
+      file="project_issue_contract_report.report_contract_history_issue_qweb"
+      />
+  </data>
+</openerp>

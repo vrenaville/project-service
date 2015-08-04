@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="project_issue_contract_report.report_contract_history_issue_def">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                        <p>
+                            <h2>
+                                <span>History Issues</span>
+                            </h2>
+                            
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket</th>
+                                        <th>Date</th>
+                                        <th>Subject</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr t-foreach="o.get_account_issue()"
+                                        t-as="issue">
+                                        <tr t-foreach="issue.get_issue_message()" t-as='message' >
+	                                        <td>
+	                                          Ref: <span t-field="o.id" />-<span t-field="o.name" />
+	                                        </td>
+	                                        <td>
+	                                          <span t-raw="message['date']" />
+	                                        </td>
+	                                        <td>
+	                                            <span t-raw="message['subject']" />
+	                                        </td>
+	                                        <td>
+	                                            <span t-raw="message['body']" />
+	                                        </td>
+	                                    </tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                        <p style="page-break-after:always"></p>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="project_issue_contract_report.report_contract_history_issue_qweb">
+            <style type="text/css">
+                .col-separator { border-right: 3px solid lightgrey !important; }
+                .large-text { min-height: 50px !important;}
+            </style>
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t
+                        t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'project_issue_contract_report.report_contract_history_issue_def')" />
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
+
