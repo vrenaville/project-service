@@ -36,7 +36,8 @@
     'data': [
         'report.xml',
         'views/report_contract_issue.xml',
-        'views/report_history_issue.xml'
+        'views/report_history_issue.xml',
+        'views/report_contract_activity.xml'
         ],
     'installable': True,
 }

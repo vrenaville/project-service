@@ -17,5 +17,13 @@
       name="project_issue_contract_report.report_contract_history_issue_qweb"
       file="project_issue_contract_report.report_contract_history_issue_qweb"
       />
+    <report
+      id="project_issue_contract_report.report_contract_activity"
+      model="account.analytic.account"
+      string="Contract Activity"
+      report_type="qweb-pdf"
+      name="project_issue_contract_report.report_contract_activity_qweb"
+      file="project_issue_contract_report.report_contract_activity_qweb"
+      />
   </data>
 </openerp>
